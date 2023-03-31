@@ -25,6 +25,17 @@ float soilMoistureSensorReading(int soilMoistureSensor_pin) {
 }
 
 
+float lightDependetResistorReading(int lightDependentResistor_pin) {
+  float valLightAnalog;
+  float valLight;
+
+  valLightAnalog = analogRead(lightDependentResistor_pin);
+  valLight = valLightAnalog;  // Placeholder for formula
+
+  return valLight;
+}
+
+
 void setup() {
   Serial.begin(9600)
 
