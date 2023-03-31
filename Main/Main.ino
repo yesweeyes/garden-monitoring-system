@@ -53,7 +53,7 @@ void loop() {
 
   Serial.println("##########");
   serialOutput("Temperature (°C): ", valFromTempModule);
-  serialOutput("Soil Mositure (%): ", valFromSoilMoistureModule);
+  serialOutput("Soil Moisture (%): ", valFromSoilMoistureModule);
   serialOutput("Light: ", valFromLDRModule);
   Serial.print("\n");
   Serial.println("##########");
