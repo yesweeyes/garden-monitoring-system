@@ -6,11 +6,11 @@ float temperatureSensorReading(int temperatureSensor_pin) {
   float valTempAnalog;
   float valTemp_Celsius;
 
-  valTempAnalog = analogRead(this->temperatureSensor_pin);
+  valTempAnalog = analogRead(temperatureSensor_pin);
   valTemp_Celsius = (valTempAnalog/1024)*5;
   valTemp_Celsius = valTemp_Celsius * 10;
 
-  return valtemp_Celsius;
+  return valTemp_Celsius;
 }
 
 
@@ -18,7 +18,7 @@ float soilMoistureSensorReading(int soilMoistureSensor_pin) {
   float valMoistureAnalog;
   float valMoisturePercenatge;
 
-  valMoistureAnalog = analogRead(this->soilMoistureSensor_pin);
+  valMoistureAnalog = analogRead(soilMoistureSensor_pin);
   valMoisturePercenatge = 100 - (valMoistureAnalog/1024)*100;
 
   return valMoisturePercenatge;
@@ -36,12 +36,27 @@ float lightDependetResistorReading(int lightDependentResistor_pin) {
 }
 
 
-void setup() {
-  Serial.begin(9600)
+void serialOutput(char string[], float val) {
+  Serial.print(String(string) + ": " + String(val) + "\n");
+}
 
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("\n");
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  float valFromTempModule = temperatureSensorReading(temperatureSensor_pin);
+  float valFromSoilMoistureModule = soilMoistureSensorReading(soilMoistureSensor_pin);
+  float valFromLDRModule = lightDependetResistorReading(lightDependentResistor_pin);
 
+  Serial.println("##########");
+  serialOutput("Temperature (°C): ", valFromTempModule);
+  serialOutput("Soil Mositure (%): ", valFromSoilMoistureModule);
+  serialOutput("Light: ", valFromLDRModule);
+  Serial.print("\n");
+  Serial.println("##########");
+
+  delay(1500);
 }
