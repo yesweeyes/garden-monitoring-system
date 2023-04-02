@@ -52,9 +52,15 @@ void loop() {
   float valFromLDRModule = lightDependetResistorReading(lightDependentResistor_pin);
 
   Serial.println("##########");
+<<<<<<< HEAD
   serialOutput("Temperature (°C) ", valFromTempModule);
   serialOutput("Soil Moisture (%) ", valFromSoilMoistureModule);
   serialOutput("Light ", valFromLDRModule);
+=======
+  serialOutput("Temperature (°C): ", valFromTempModule);
+  serialOutput("Soil Moisture (%): ", valFromSoilMoistureModule);
+  serialOutput("Light: ", valFromLDRModule);
+>>>>>>> 9182fd689655eb4752dfe7e69b46d1749e2461bd
   Serial.print("\n");
   Serial.println("##########");
 
